@@ -51,14 +51,15 @@ public class MyFrameDate extends JFrame {
         setLayout(layout);
         //设置对齐方式
         layout.setAlignment(FlowLayout.LEADING);
+
         JButton b2 = new JButton("随机点名");
-        this.add(b2);
+        add(b2);
          randomPickLabel = new JLabel("点击随机点名");
         add(randomPickLabel);
         ActionListener Listener2 = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                randomPick();
+                randomPickLabel();
             }
         };
 
@@ -67,7 +68,7 @@ public class MyFrameDate extends JFrame {
         public void randomPickLabel(){
         Random random=new Random();
         int i=random.nextInt(36);
-            String s=String.valueOf(i);
+        String s=String.valueOf(i);
         if(i==0||i==1){
             randomPickLabel.setText("20203606130");
 
@@ -78,6 +79,7 @@ public class MyFrameDate extends JFrame {
         else{
             randomPickLabel.setText("20208117010"+i);
         }
+        randomPickLabel.setText(s);
 
     }
 
