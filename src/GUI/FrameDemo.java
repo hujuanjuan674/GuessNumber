@@ -9,5 +9,6 @@ public class FrameDemo {
         MyFrameDate frame2=new MyFrameDate("第二个窗口");
         frame2.caculation();
 
+
     }
 }
