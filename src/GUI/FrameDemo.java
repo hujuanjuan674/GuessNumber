@@ -1,6 +1,7 @@
 package GUI;
 
 import javax.swing.*;
+import java.util.Calendar;
 
 public class FrameDemo {
     public static void main(String[] args){
@@ -8,6 +9,7 @@ public class FrameDemo {
         frame1.showTime();
         MyFrameDate frame2=new MyFrameDate("第二个窗口");
         frame2.caculation();
+
 
 
     }

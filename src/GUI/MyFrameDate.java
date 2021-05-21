@@ -78,12 +78,12 @@ public class MyFrameDate extends JFrame {
         ActionListener Listener4 = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ;
+                getCalendar();
             }
         };
         b4.addActionListener(Listener4);
-        calendarLable.setText("当前日期");
     }
+
 
     public void showDate() {
         Date nowTime = new Date();
@@ -133,6 +133,8 @@ public class MyFrameDate extends JFrame {
         rill.set(year, month - 1, 1);
         int weekend = rill.get(Calendar.DAY_OF_WEEK) - 1;
         int day = 0;
+        Date nowDate = new Date();
+        calendarLable.setText("nowDate.toString()");
         if (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12) {
             day = 31;
         }
@@ -156,4 +158,6 @@ public class MyFrameDate extends JFrame {
             a[i] = " ";
         return a;
     }
+
+
 }
