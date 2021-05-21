@@ -1,5 +1,7 @@
 package GUI;
 
+import org.w3c.dom.*;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -10,6 +12,8 @@ import java.util.Random;
 public class MyFrameDate extends JFrame {
     JLabel dateLabel;
     JLabel randomPickLabel;
+    JLabel resultLable;
+    JTextField t1;
 
 
     public MyFrameDate() {
@@ -27,12 +31,11 @@ public class MyFrameDate extends JFrame {
         FlowLayout layout = new FlowLayout();
         setLayout(layout);
         //设置对齐方式
-        layout.setAlignment(FlowLayout.LEFT);
+        layout.setAlignment(FlowLayout.CENTER);
         JButton b1 = new JButton("显示时间");
-        this.add(b1);
+        add(b1);
         dateLabel = new JLabel("点击显示时间");
         add(dateLabel);
-
         //添加监视器
         ActionListener Listener1 = new ActionListener() {
             @Override
@@ -42,45 +45,56 @@ public class MyFrameDate extends JFrame {
         };
         b1.addActionListener(Listener1);
     }
-    public void showDate(){
-        Date nowTime=new Date();
+    public void showDate() {
+        Date nowTime = new Date();
         dateLabel.setText(nowTime.toString());
-    }
-    public void randomPick() {
-        FlowLayout layout = new FlowLayout();
-        setLayout(layout);
-        //设置对齐方式
-        layout.setAlignment(FlowLayout.CENTER);
 
+    }
+    public void randomPickLabel() {
         JButton b2 = new JButton("随机点名");
         add(b2);
-         randomPickLabel = new JLabel("点击随机点名");
+        randomPickLabel = new JLabel("点击随机点名");
         add(randomPickLabel);
-        ActionListener Listener2 = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                randomPickLabel();
-            }
-        };
+        Random random = new Random();
+        int i = random.nextInt(36);
 
-        b2.addActionListener(Listener2);
-    }
-        public void randomPickLabel(){
-        Random random=new Random();
-        int i=random.nextInt(36);
-
-        if(i==0||i==1){
+        if (i == 0 || i == 1) {
             randomPickLabel.setText("20203606130");
 
+        } else if (i <= 10) {
+            randomPickLabel.setText("20208117010" + i);
+        } else {
+            randomPickLabel.setText("2020811701" + i);
+            ActionListener Listener2 = new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    randomPickLabel();
+                }
+            };
+            b2.addActionListener(Listener2);
         }
-        else if(i<=10){
-            randomPickLabel.setText("20208117010"+i);
+    }
+        public void caculation(){
+            FlowLayout layout = new FlowLayout();
+            setLayout(layout);
+            //设置对齐方式
+            layout.setAlignment(FlowLayout.CENTER);
+            t1 = new JTextField();
+            this.add(t1);
+            JButton b3 = new JButton("求平方根");
+            this.add(b3);
+            resultLable = new JLabel("求平方根结果");
+            add(resultLable);
+            double d = Double.parseDouble(t1.getText());
+            double result = Math.sqrt(d);
+            resultLable.setText(String.valueOf(result));
+            ActionListener Listener3 = new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    caculation();
+                }
+            };
+            b3.addActionListener(Listener3);
         }
-        else{
-            randomPickLabel.setText("20208117010"+i);
-        }
-
-
     }
 
-}
